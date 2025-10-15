@@ -2,25 +2,40 @@
 
 //Import di Classi Java necessarie al funzionamento del programma
 import java.util.Scanner;
-
-// Classe principale, con metodo main
+import java.util.Random;
 class Esercizio {
-    // Il programma parte con una chiamata a main().
+    public void visualizzaVettore(int [] V, int N){
+        int i ;
+        for (i = 0 ; i <= N-1; ++i){
+            System.out.println("Cella "+i+" : "+V[i]);
+        }
+    }
     public static void main(String args[])
     {
-        //Variabili del programma
-        String nome;
-
-        //Creo l'oggetto in per l'input da tastiera
         Scanner in = new Scanner( System.in );
-
-        //Leggo l'input da tastiera
-        System.out.print("Inserisci il tuo nome: ");
-        nome = in.nextLine();
-
-        //Output del nome acquisito da tastiera
-        System.out.println("Ciao "+nome+"!");
+        Random r = new Random();
+        int N,nP,nD,i,x;
+        System.out.println("Inserisci quanti nuumeri vuoi generare");
+        N = in.nextInt();
+        int [] V = new int[N*10], int [] Vp = new int[N*10],int [] Vd = new int[N*10];
+        nP = 0;
+        nD = 0;
+        i = 0;
+        while(i <= N-1){
+            x = r.nextInt((N*10)+1);
+            if (x % 2 == 0){
+                Vp[nP] = x;
+                ++nP;
+            }
+            else{
+                Vd[nD] = x;
+                ++nD;
+            }
+            ++i;
+        }
+        System.out.println("Ecco il vettore dispari : ");
+        visualizzaVettore(Vd,nD);
+        System.out.println("Ecco il vettore pari : ");
+        visualizzaVettore(Vp,nP);
     }
 }
-
-//LEGGERE LE ISTRUZIONI NEL FILE README.md
